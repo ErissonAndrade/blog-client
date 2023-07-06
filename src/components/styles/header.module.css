@@ -1,0 +1,17 @@
+.title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.banner {
+    background-color: #7289da;
+    margin-bottom: 20px;
+    font-size: 22px;
+    text-align: center;
+}
+
+.banner > p {
+    font-size: 20px;
+}
