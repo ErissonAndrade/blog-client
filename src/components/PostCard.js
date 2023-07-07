@@ -7,10 +7,10 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function PostCard({
-  image,
-  title,
-  date,
-  text
+    image,
+    title,
+    date,
+    text
 }) {
   return (
     <Card sx={{ maxWidth: '300px', backgroundColor: '#f2c04e' }}>
@@ -32,7 +32,7 @@ export default function PostCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button variant="contained" color="secondary" size="small">Learn More</Button>
       </CardActions>
     </Card>
   );

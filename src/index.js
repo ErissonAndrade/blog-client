@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Container from '@mui/material/Container';
 import './styles/global.css';
+import RouteSwitch from './routes/RouteSwitch';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Container
-    maxWidth="xlg"
+  <Container 
+    maxWidth="xlg" 
     disableGutters="true"
     sx={{
       height: '100vh',
       display: 'flex',
       flexDirection: 'column',
     }}>
-    <App />
+    <RouteSwitch />
   </Container>
 );
 

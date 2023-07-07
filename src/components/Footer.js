@@ -1,5 +1,5 @@
 function Footer() {
-    return (
+    return(
         <footer>
             <h3>Platypus footer</h3>
         </footer>

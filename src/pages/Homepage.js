@@ -6,42 +6,42 @@ import image2 from '../assets/64287.jpg';
 import image3 from '../assets/jz6g_pti6_210907.jpg';
 
 function Homepage() {
-    const posts = [
-        {
-            title: "Mock Title",
-            date_formatted: "Mock Date",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-            image: image1
-        },
-        {
-            title: "Mock Title",
-            date_formatted: "Mock Date",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-            image: image2
-        },
-        {
-            title: "Mock Title",
-            date_formatted: "Mock Date",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-            image: image3
-        },
-    ]
-    return (
+const posts = [
+    {
+        title: "Mock Title",
+        date_formatted: "Mock Date",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
+        image: image1
+    },
+    {
+        title: "Mock Title",
+        date_formatted: "Mock Date",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
+        image: image2
+    },
+    {
+        title: "Mock Title",
+        date_formatted: "Mock Date",
+        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
+        image: image3
+    },
+];
+    return(
         <>
-            <Header />
+            <Header subtitle={true}/>
             <main>
                 {posts.map(post => {
-                    return (
-                        <div>
-                            <PostCard
-                                title={post.title}
-                                date={post.date_formatted}
-                                text={post.text}
-                                image={post.image}
-                            />
-                        </div>
-                    );
-                })
+                        return (
+                            <article>
+                                <PostCard 
+                                    title={post.title}
+                                    date={post.date_formatted}
+                                    text={post.text}
+                                    image={post.image}
+                                />
+                            </article>
+                        );
+                    })
                 }
             </main>
             <Footer />

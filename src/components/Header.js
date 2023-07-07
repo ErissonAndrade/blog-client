@@ -1,16 +1,17 @@
 import header from './styles/header.module.css';
 
-function Header() {
+function Header ({ subtitle }) {
     return (
         <header>
             <div className={header.title}>
                 <h1>Platypus Blog</h1>
             </div>
-            <div className={header.banner}>
+            {subtitle &&
+                <div className={header.banner}>
                 <h1>Welcome to platypus blog!</h1>
                 <p>Learn everything about these wonderful creatures!</p>
             </div>
-
+            } 
         </header>
     );
 };
