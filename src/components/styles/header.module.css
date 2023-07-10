@@ -1,8 +1,13 @@
 .title {
     font-size: 32px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
     text-align: center;
+    text-decoration: none;
+}
+
+.title > h1 {
+    padding-bottom: .7rem;
 }
 
 .banner {

@@ -36,10 +36,13 @@ function PostPage() {
             <main>
                 <div className={postPage.body}>
                     <header className={postPage.header}>
+                        <div className={postPage.banner}>
+                            <img src={post.image} />
+                        </div>
                         <h1>{post.title}</h1>
                         <p>{post.date_formatted}</p>
                     </header>
-                    <article>
+                    <article className={postPage.article}>
                         {post.text}
                     </article>
                 </div>

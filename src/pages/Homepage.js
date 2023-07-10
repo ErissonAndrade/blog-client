@@ -1,47 +1,42 @@
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import PostCard from '../components/PostCard.js';
-import image1 from '../assets/40659.jpg';
-import image2 from '../assets/64287.jpg';
-import image3 from '../assets/jz6g_pti6_210907.jpg';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
+
 
 function Homepage() {
-const posts = [
-    {
-        title: "Mock Title",
-        date_formatted: "Mock Date",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-        image: image1
-    },
-    {
-        title: "Mock Title",
-        date_formatted: "Mock Date",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-        image: image2
-    },
-    {
-        title: "Mock Title",
-        date_formatted: "Mock Date",
-        text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-        image: image3
-    },
-];
-    return(
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:5000/posts')
+            .then(response => {
+                const data = response.data;
+                setPosts(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, []);
+
+    return (
         <>
-            <Header subtitle={true}/>
+            <Header subtitle={true} />
             <main>
                 {posts.map(post => {
-                        return (
-                            <article>
-                                <PostCard 
-                                    title={post.title}
-                                    date={post.date_formatted}
-                                    text={post.text}
-                                    image={post.image}
-                                />
-                            </article>
-                        );
-                    })
+                    return (
+                        <article key={post._id}>
+                            <PostCard
+                                title={post.title}
+                                date={post.date_formatted}
+                                text={post.text}
+                                image={post.image}
+                            // links={post.link}
+                            />
+                        </article>
+                    );
+                })
                 }
             </main>
             <Footer />

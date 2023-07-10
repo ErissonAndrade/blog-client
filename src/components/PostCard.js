@@ -5,12 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export default function PostCard({
     image,
     title,
     date,
-    text
+    text,
+    links
 }) {
   return (
     <Card sx={{ maxWidth: '300px', backgroundColor: '#f2c04e' }}>
@@ -32,7 +34,9 @@ export default function PostCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button variant="contained" color="secondary" size="small">Learn More</Button>
+        <Link to={links}>
+          <Button variant="contained" color="secondary" size="small">Learn More</Button>
+        </Link>
       </CardActions>
     </Card>
   );

@@ -6,7 +6,10 @@ export default function CommentPaper({
     text
 }) {
     return (
-        <Paper elevation={5} sx={{backgroundImage: 'linear-gradient(to right, #667eea, #764ba2)'}}>
+        <Paper elevation={0} sx={{
+            backgroundImage: 'linear-gradient(to right, #667eea, #764ba2)',
+            padding: '.8rem',
+        }}>
             <header>
                 <h2>{username}</h2>
                 <p>{date}</p>

@@ -1,11 +1,12 @@
 import header from './styles/header.module.css';
+import { Link } from 'react-router-dom'
 
 function Header ({ subtitle }) {
     return (
         <header>
-            <div className={header.title}>
+            <Link className={header.title} to="/">
                 <h1>Platypus Blog</h1>
-            </div>
+            </Link>
             {subtitle &&
                 <div className={header.banner}>
                 <h1>Welcome to platypus blog!</h1>
