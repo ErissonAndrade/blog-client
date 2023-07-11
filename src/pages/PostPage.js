@@ -1,66 +1,60 @@
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
-import image1 from '../assets/40659.jpg';
 import postPage from './styles/postPage.module.css';
 import CommentPaper from '../components/CommentPaper.js';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-function PostPage() {
-    const post = 
-        {
-            title: "Mock Title",
-            date_formatted: "Mock Date",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravida, quis.",
-            image: image1,
-            comments: [
-                {
-                    username: "Test",
-                    date: "Test Date",
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravid"
-                },
-                {
-                    username: "Test",
-                    date: "Test Date",
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravid"
-                },
-                {
-                    username: "Test",
-                    date: "Test Date",
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas semper velit quis elit gravid"
-                }
-            ]
-        }
-    
+function PostPage({ postId }) {
+    const [post, setPost] = useState([]);
+
+    useEffect(() => {
+        axios
+            .get(`http://localhost:5000/posts/${postId}`)
+            .then(response => {
+                const data = response.data;
+                setPost(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }, [postId]);
+
+    console.log(post);
+
     return (
         <>
-            <Header subtitle={false}/>
+            <Header subtitle={false} />
             <main>
                 <div className={postPage.body}>
                     <header className={postPage.header}>
                         <div className={postPage.banner}>
-                            <img src={post.image} />
+
                         </div>
                         <h1>{post.title}</h1>
                         <p>{post.date_formatted}</p>
                     </header>
                     <article className={postPage.article}>
-                        {post.text}
+                        <div>{post.text}</div>
                     </article>
                 </div>
             </main>
             <div className={postPage.commentsContainer}>
                 <h1>Comments</h1>
-                {post.comments.map(comment => {
-                    return(
-                        <div className={postPage.commentContainer}>
-                            <CommentPaper
-                                username={comment.username}
-                                date={comment.date}
-                                text={comment.text}
-                            />
-                        </div>
-                    );
-                })}
-            </div>    
+                {post.comments &&
+                    post.comments.map(comment => {
+                        return (
+                            <div className={postPage.commentContainer}>
+                                <CommentPaper
+                                    key={comment.id}
+                                    user={comment.user}
+                                    date={comment.date_formatted}
+                                    message={comment.message}
+                                />
+                            </div>
+                        );
+                    })}
+            </div>
             <Footer />
         </>
     )

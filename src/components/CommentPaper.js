@@ -1,9 +1,9 @@
 import Paper from '@mui/material/Paper';
 
 export default function CommentPaper({
-    username,
+    user,
     date,
-    text
+    message
 }) {
     return (
         <Paper elevation={0} sx={{
@@ -11,11 +11,11 @@ export default function CommentPaper({
             padding: '.8rem',
         }}>
             <header>
-                <h2>{username}</h2>
+                <h2>{user}</h2>
                 <p>{date}</p>
             </header>
             <div>
-                <p>{text}</p>
+                <p>{message}</p>
             </div>
         </Paper>
     );

@@ -4,7 +4,6 @@ import PostCard from '../components/PostCard.js';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-
 function Homepage() {
     const [posts, setPosts] = useState([]);
 
@@ -32,7 +31,7 @@ function Homepage() {
                                 date={post.date_formatted}
                                 text={post.text}
                                 image={post.image}
-                            // links={post.link}
+                                url={post.url}
                             />
                         </article>
                     );

@@ -12,7 +12,7 @@ export default function PostCard({
     title,
     date,
     text,
-    links
+    url
 }) {
   return (
     <Card sx={{ maxWidth: '300px', backgroundColor: '#f2c04e' }}>
@@ -34,7 +34,7 @@ export default function PostCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Link to={links}>
+        <Link to={url}>
           <Button variant="contained" color="secondary" size="small">Learn More</Button>
         </Link>
       </CardActions>
