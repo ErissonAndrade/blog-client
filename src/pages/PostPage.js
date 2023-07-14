@@ -20,8 +20,6 @@ function PostPage({ postId }) {
             });
     }, [postId]);
 
-    console.log(post);
-
     return (
         <>
             <Header subtitle={false} />
@@ -29,7 +27,9 @@ function PostPage({ postId }) {
                 <div className={postPage.body}>
                     <header className={postPage.header}>
                         <div className={postPage.banner}>
-
+                            {post.images &&
+                                <img key={post._id} src={post.images[0].imageURL} alt={post.images[0].imageAlt} />
+                            }  
                         </div>
                         <h1>{post.title}</h1>
                         <p>{post.date_formatted}</p>
@@ -44,7 +44,7 @@ function PostPage({ postId }) {
                 {post.comments &&
                     post.comments.map(comment => {
                         return (
-                            <div className={postPage.commentContainer}>
+                            <div key={comment._id} className={postPage.commentContainer}>
                                 <CommentPaper
                                     key={comment.id}
                                     user={comment.user}

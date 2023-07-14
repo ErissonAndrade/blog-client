@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export default function PostCard({
     image,
+    imageAlt,
     title,
     date,
     text,
@@ -18,7 +19,7 @@ export default function PostCard({
     <Card sx={{ maxWidth: '300px', backgroundColor: '#f2c04e' }}>
       <CardMedia
         component="img"
-        alt="green iguana"
+        alt={imageAlt}
         height="200"
         image={image}
       />

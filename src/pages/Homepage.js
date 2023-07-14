@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 
 function Homepage() {
     const [posts, setPosts] = useState([]);
-
+ 
     useEffect(() => {
         axios
             .get('http://localhost:5000/posts')
@@ -29,8 +29,9 @@ function Homepage() {
                             <PostCard
                                 title={post.title}
                                 date={post.date_formatted}
-                                text={post.text}
-                                image={post.image}
+                                text={post.preview}
+                                image={post.images[0].imageURL}
+                                imageAlt={post.images[0].name}
                                 url={post.url}
                             />
                         </article>
