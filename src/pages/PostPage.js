@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 
 function PostPage({ postId }) {
     const [post, setPost] = useState([]);
+    const [showCommentInput, setShowCommentInput] = useState(false)
 
     useEffect(() => {
         axios
@@ -19,6 +20,25 @@ function PostPage({ postId }) {
                 console.error(error);
             });
     }, [postId]);
+
+    const postComment = (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.target);
+        const user = formData.get('user');
+        const message = formData.get('message');
+        axios
+            .post(`http://localhost:5000/posts/${postId}/comments`, {
+                user,
+                message
+            })
+            .then(response => {
+                const data = response.data;
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            })
+    };
 
     return (
         <>
@@ -39,6 +59,16 @@ function PostPage({ postId }) {
                     </article>
                 </div>
             </main>
+            <div className={postPage.commentsInputsContainer}>
+                {showCommentInput ? 
+                    <form action={`http://localhost:5000/posts/${postId}`} method="post" onSubmit={(e) => postComment(e)} className={postPage.commentsForm}>
+                        <input type="text" name="user" id="user" />
+                        <input type="textarea" name="message" id="message" />
+                        <button type="submit">Submit</button>
+                    </form> :
+                    <button onClick={() => setShowCommentInput(true)}>Add a Comment!</button>
+                }
+            </div>
             <div className={postPage.commentsContainer}>
                 <h1>Comments</h1>
                 {post.comments &&
