@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
+import postCard from './styles/postCard.module.css';
 
 export default function PostCard({
     image,
@@ -16,21 +17,21 @@ export default function PostCard({
     url
 }) {
   return (
-    <Card sx={{ maxWidth: '300px', backgroundColor: '#f2c04e' }}>
+    <div className={postCard.container}>
       <CardMedia
         component="img"
         alt={imageAlt}
-        height="200"
+        height="400"
         image={image}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent className={postCard.textContainer}>
+        <Typography gutterBottom class={postCard.title} component="div">
           {title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="inherit" color="text.secondary" class={postCard.text}>
           {text}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="inherit" class={postCard.date}>
           {date}
         </Typography>
       </CardContent>
@@ -39,6 +40,6 @@ export default function PostCard({
           <Button variant="contained" color="secondary" size="small">Learn More</Button>
         </Link>
       </CardActions>
-    </Card>
+    </div>
   );
 }

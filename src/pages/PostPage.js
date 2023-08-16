@@ -4,6 +4,8 @@ import postPage from './styles/postPage.module.css';
 import CommentPaper from '../components/CommentPaper.js';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import CommentInput from '../components/CommentInput.js';
+import Button from '@mui/material/Button';
 
 function PostPage({ postId }) {
     const [post, setPost] = useState([]);
@@ -51,22 +53,34 @@ function PostPage({ postId }) {
                                 <img key={post._id} src={post.images[0].imageURL} alt={post.images[0].imageAlt} />
                             }  
                         </div>
-                        <h1>{post.title}</h1>
-                        <p>{post.date_formatted}</p>
+                        <h1 className={postPage.title}>{post.title}</h1>
+                        <p className={postPage.date}>{post.date_formatted}</p>
                     </header>
                     <article className={postPage.article}>
-                        <div>{post.text}</div>
+                        <div className={postPage.articleText}>{post.text}</div>
                     </article>
                 </div>
             </main>
             <div className={postPage.commentsInputsContainer}>
                 {showCommentInput ? 
-                    <form action={`http://localhost:5000/posts/${postId}`} method="post" onSubmit={(e) => postComment(e)} className={postPage.commentsForm}>
-                        <input type="text" name="user" id="user" />
-                        <input type="textarea" name="message" id="message" />
-                        <button type="submit">Submit</button>
+                    <form action='' method="post" onSubmit={(e) => postComment(e)} className={postPage.commentsForm}>
+                        <CommentInput />
+                        <Button 
+                            variant="contained" 
+                            color="secondary" 
+                            size="small" 
+                            type="submit"
+                        >   
+                            Submit
+                        </Button>
                     </form> :
-                    <button onClick={() => setShowCommentInput(true)}>Add a Comment!</button>
+                    <Button 
+                        onClick={() => setShowCommentInput(true)}
+                        variant="contained" 
+                        color="secondary" size="small"
+                    >
+                        Add a coment!
+                    </Button>
                 }
             </div>
             <div className={postPage.commentsContainer}>

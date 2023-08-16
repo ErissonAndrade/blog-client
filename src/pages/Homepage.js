@@ -3,6 +3,7 @@ import Footer from '../components/Footer.js';
 import PostCard from '../components/PostCard.js';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import homePage from './styles/homePage.module.css';
 
 function Homepage() {
     const [posts, setPosts] = useState([]);
@@ -25,7 +26,7 @@ function Homepage() {
             <main>
                 {posts.map(post => {
                     return (
-                        <article key={post._id}>
+                        <article key={post._id} className={homePage.cardContainer}>
                             <PostCard
                                 title={post.title}
                                 date={post.date_formatted}

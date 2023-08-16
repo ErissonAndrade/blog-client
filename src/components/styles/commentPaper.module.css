@@ -1,0 +1,20 @@
+.commentPaperContainer {
+    background-image: linear-gradient(to right, #667eea, #764ba2);
+    padding: .8rem;
+    border: solid white;
+    border-radius: 30px;
+    text-align: center;
+    min-width: 500px;
+}
+
+.commentHeader > h2 {
+    font-size: 1.8rem;
+}
+
+.commentHeader > p {
+    font-size: 1.4rem;
+}
+
+.commentMessage {
+    font-size: 1.6rem;
+}
